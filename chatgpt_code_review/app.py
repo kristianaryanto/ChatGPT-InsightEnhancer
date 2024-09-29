@@ -74,12 +74,13 @@ def app():
                             st.write("---")
                         else:
                             first = False
-                        st.subheader(display.escape_markdown(rec["code_file"]))
-                        recommendation = (
-                            rec["recommendation"] or "No recommendations"
-                        )
-                        st.markdown(recommendation)
-                        with st.expander("View Code"):
+                        with st.expander(display.escape_markdown(rec["code_file"])):
+                            st.subheader(display.escape_markdown(rec["code_file"]))  
+                            recommendation = (
+                                rec["recommendation"] or "No recommendations"
+                            )
+                            st.markdown(recommendation)
+                        with st.expander(display.escape_markdown(rec["code_file"])+" Original Code"):
                             extension = os.path.splitext(rec["code_file"])[1]
                             display.display_code(
                                 rec["code_snippet"], extension

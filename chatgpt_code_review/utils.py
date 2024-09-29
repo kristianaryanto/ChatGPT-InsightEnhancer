@@ -13,6 +13,7 @@ EXTENSION_TO_LANGUAGE_MAP = {
     ".go": "go",
     ".swift": "swift",
     ".ts": "typescript",
+    ".tsx": "typescript",
     ".rs": "rust",
     ".kt": "kotlin",
     ".m": "objective-c",

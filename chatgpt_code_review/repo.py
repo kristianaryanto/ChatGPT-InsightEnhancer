@@ -10,6 +10,7 @@ def list_code_files_in_repository(
 ) -> Iterable[str]:
     """Clone the GitHub repository and return a list of code files with the specified extensions."""
     local_path = clone_github_repository(repo_url)
+    print(local_path)
     return get_all_files_in_directory(local_path, extensions)
 
 
@@ -21,6 +22,7 @@ def clone_github_repository(repo_url: str) -> str:
     if not os.path.exists(local_path):
         Repo.clone_from(repo_url, local_path)
 
+    print(local_path)
     return local_path
 
 
@@ -31,6 +33,7 @@ def get_all_files_in_directory(path: str, extensions: list[str]) -> list[str]:
         for filename in filenames:
             if any(filename.endswith(ext) for ext in extensions):
                 files.append(os.path.join(root, filename))
+    # print(files)
     return files
 
 
@@ -54,4 +57,5 @@ def create_file_tree(code_files: Iterable[str]) -> list[dict[str, str]]:
                 current_level.append(new_node)
                 if i != len(parts) - 1:
                     current_level = new_node.setdefault("children", [])
+    # print(file_tree)
     return file_tree
